@@ -6,7 +6,12 @@ def mod_ins(mod_list : list,
             addation_dict : dict,
             ins_dir="/mnt",
             a=-1) -> bool:
-    # mod_list : 可安裝列表 introduction_list : 安裝紹介 ins_dir : 安裝目錄 a : 安裝序號
+    """
+    mod_list : 可安裝列表 introduction_list : 安裝紹介
+    ins_dir : 安裝目錄 a : 安裝序號 addation ：附加訊息，目前只有「cleararch」標籤
+    你若是願意，在裏面寫一個不是「cleararch」的註釋也是可以的
+    """
+    # 預處理
     if mod_list != list and introduction_list != list and addation_dict != dict:
         return False
     if len(mod_list)!=len(introduction_list) or len(mod_list)==0:
@@ -16,6 +21,7 @@ def mod_ins(mod_list : list,
             return False
         if i<0:
             return False
+    #預處理
     n=-1
     for i in mod_list:
         n+=1

@@ -5,7 +5,7 @@ import multi_lang
 lang=multi_lang.name("zh_CN")
 
 def check_networking():
-    myURL1 = urlopen("https://www.runoob.com/")
+    myURL1 = urlopen("https://www.quad9.net")
     if myURL1.getcode()!=200:
         return False
     else:
