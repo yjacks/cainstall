@@ -1,0 +1,12 @@
+[
+  ["linux-clear",
+    "linux-tikogasa",
+    "linux-zen",
+    "linux"],
+  ["Clearlinux上游的默認內核。",
+  "Cleararch的推荐内核",
+  "Arch上游由一群内核黑客实现的内核",
+  "Arch上游的默认内核"],
+  {"0":"cleararch",
+    "1": "cleararch"}
+]

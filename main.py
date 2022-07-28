@@ -6,12 +6,12 @@ def check_efi()->bool:
     return os.path.isdir("ls /sys/firmware/efi/efivars")
 def start_display():
     print("""
-    這裏是Cleararch Team，歡迎你安裝我們的系統！
-    這段文字的寫作者：Kirisame Marisa對你表示真誠的問候。
-    本系統以Arch爲基礎，加入了許多「原創的」軟體包、配置等，團隊均爲中國人，相信能讓同在中國的你更感熟悉。
-    本項目借鑑了大量Clear linux的思想，所以我們拼合兩個發行版的名字，也就是「Cleararch」。
-    請謹慎的考慮使用一個滾動發行的、小團隊維護的Linux，這可能並不適合您。
-    如果您考慮周全了，按下「回車鍵」來進入下一步（連接網際網路）。
+    这里是Cleararch Team，欢迎你安装我们的系统！
+    这段文字的写作者：Kirisame Marisa对你表示真诚的问候。
+    本系统以Arch为基础，加入了许多「原创的」软件包、配置等，团队均为中国人，相信能让同在中国的你更感熟悉。
+    本项目借鉴了大量Clear linux的思想，所以我们拼合两个发行版的名字，也就是「Cleararch」。
+    请谨慎的考虑使用一个滚动发行的、小团队维护的Linux，这可能并不适合您。
+    如果您考虑周全了，按下「回车键」来进入下一步（连接因特网）。
     """)
     input()
     os.system("timedatectl set-ntp true")
