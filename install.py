@@ -16,10 +16,10 @@ def mod_ins(mod_list: list,
         return False
     for i, b in addation_dict:
         try:
-            i=int(i)
+            i = int(i)
         except TypeError:
             return False
-        if i < 0 or i >len(mod_list):
+        if i < 0 or i > len(mod_list):
             return False
     # 结束預處理
     n = -1
@@ -41,13 +41,14 @@ def mod_ins(mod_list: list,
     for i, b in addation_dict:
         if i == a:
             if addation_dict[a] == "cleararch":
-                if os.system("pacm install "+addation_dict[a]) != 0:
+                if os.system("pacm install " + addation_dict[a]) != 0:
                     os.system("clear")
                     return False
                 else:
                     os.system("clear")
                     return True
-    if os.system("yes |  pacstrap  " + mod_list[a]):
+    os.makedirs(ins_dir+"/var/lib/pacman/")
+    if os.system("yes |  pacman -S -r  " + ins_dir + " " + mod_list[a]):
         os.system("clear")
         return False
     else:
@@ -55,14 +56,15 @@ def mod_ins(mod_list: list,
         return True
 
 
-def install_from_json(json_file):
+def install_from_json(json_file) -> bool:
     f = open(json_file, "r", encoding="utf8")
     install_text = json.load(f)
+    f.close()
     try:
-        return mod_ins(install_text[0], install_text[1], install_text[2], install_text[3],install_text[4])
+        return mod_ins(install_text[0], install_text[1], install_text[2], install_text[3], install_text[4])
     except IndexError:
         try:
-            return mod_ins(install_text[0], install_text[1], install_text[2],install_text[3])
+            return mod_ins(install_text[0], install_text[1], install_text[2], install_text[3])
         except IndexError:
             try:
                 return mod_ins(install_text[0], install_text[1], install_text[2])

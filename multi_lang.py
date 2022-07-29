@@ -1,8 +1,9 @@
 supportedLanguage = ["en_US", "zh_CN"]
 
+
 class name:
     def __init__(self, userLanguage):
-    # American English (en_US)
+        # American English (en_US)
         if userLanguage == "en_US":
             # universal
             self.exitMessage = "Exited Installation."
