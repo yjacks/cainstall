@@ -2,25 +2,36 @@ import os
 import network
 
 
-# 默認「ins」爲「insta;;」、mod爲「module」
+# 默认「ins」为「install」、「mod」为「module」
 def check_efi() -> bool:
     return os.path.isdir("ls /sys/firmware/efi/efivars")
 
 
 def start_display() -> None:
-    print("""
-    这里是Cleararch Team，欢迎你安装我们的系统！
-    这段文字的写作者：Kirisame Marisa对你表示真诚的问候。
-    本系统以Arch为基础，加入了许多「原创的」软件包、配置等，团队均为中国人，相信能让同在中国的你更感熟悉。
-    本项目借鉴了大量Clear linux的思想，所以我们拼合两个发行版的名字，也就是「Cleararch」。
-    请谨慎的考虑使用一个滚动发行的、小团队维护的Linux，这可能并不适合您。
-    如果您考虑周全了，按下「回车键」来进入下一步（连接因特网）。
-    """)
+    print(
+        "这里是 ClearArch 开发团队，欢迎您安装 ClearArch！\n"
+        "本系统基于 Arch Linux，并加入许多原创软件包、配置等内容。\n"
+        "在创新的同时，我们也借鉴大量 Clear Linux 的思想，项目由此得名。\n"
+        "因本系统滚动发行并由小团体维护，请谨慎考虑使用。\n"
+        "若您考虑周全并愿意承担风险，请按下 Enter 以进入下一步。\n"
+        "\n"
+        "Welcome to the ClearArch installer!\n"
+        "ClearArch takes several ideas and concepts from Clear Linux and implements them onto an Arch platform.\n"
+        "This makes the core of the project, which is further innovated on with the introduction of several new packages and configurations.\n"
+        "\n"
+        "Be advised that this project is released and maintained by a small group on a rolling basis, so exercise caution when installing it.\n"
+        "If you understand and are willing to take the risk, press Enter to proceed to the next step."
+        )
     input()
-    os.system("timedatectl set-ntp true")
+
+    # 检测网络
     if not network.check_networking():
         network.connect_network()
+
+    os.system("timedatectl set-ntp true") # 时区设置应当在网络连接之后进行
     os.system("clear")
+
+
     print("下一步是使用cfdisk分区，请选择硬碟设备文件，然后按回车键，输入「list」以查看硬碟（按q以退出）。")
 
     def list_disk():
